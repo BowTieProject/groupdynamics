@@ -11,6 +11,7 @@
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="bower_components/spinkit/css/spinkit.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -28,6 +29,8 @@
           
         
       </script>
+      
+      
   </head>
   <body ng-app="frontendApp">
     <!--[if lte IE 8]>
@@ -58,10 +61,12 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+       <!-- build:js({.tmp,app}) scripts/scripts.js -->
        
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+          <!--needed for dropdown-->
+        <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.3.js"></script>
         <!-- endbuild -->
         
 </body>
