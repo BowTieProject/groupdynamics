@@ -30,5 +30,5 @@ class Feedback(db.Model):
 
 	def __init__(self,**kwargs):
 		for key,value in kwargs.items():
-			castKey = getattr(Record,key).expression.type.__repr__()
+			castKey = getattr(Feedback,key).expression.type.__repr__()
 			setattr(self,key,value)

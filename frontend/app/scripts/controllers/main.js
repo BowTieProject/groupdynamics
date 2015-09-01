@@ -14,13 +14,16 @@ angular.module('frontendApp')
 			$scope.loadingSpinner = false;
 			$scope.url_id = $routeParams.url_id;
 			getChartConfig($scope, $http);
-			$scope.encodedUrl = encodeURIComponent('Check our chat stats: ' + 'http://groupstats.io/#/' + $scope.url_id)
+			$scope.encodedUrl = encodeURIComponent('Check our chat stats: ' + 'http://groupstats.io/#/' + $scope.url_id);
+            $scope.feedback = null;
+            $scope.feedbackSent = false;
 		}
 		else {
 			$scope.url_id = null;
 			$scope.fileUploaded = false;
 			$scope.loadingSpinner = false;
 		}
+        $scope.feedback = null;
 		$scope.gotoBottom = function() {
 			// set the location.hash to the id of
 			// the element you wish to scroll to
@@ -64,7 +67,21 @@ angular.module('frontendApp')
 					}, 500);
 				});
 			}
-		};		
+		};
+
+        $scope.sendFeedback = function (){
+            
+            $http.post('/api/feedback',{
+                "message":$scope.feedback,
+                "url_id":$scope.url_id
+            })
+            .success(function(data,status,headers,config){
+              $scope.feedbackSent = true;
+            })
+            .error(function(data,status,headers,config){
+              console.log(data);
+            });
+        };
 }]);
 
 function getChartConfig($scope, $http) {

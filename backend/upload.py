@@ -66,11 +66,11 @@ def get_file_size(fileobj):
 
 @app.route('/api/feedback',methods=['POST'])
 def get_feedback():
-	parent_url = request.json['url_id']
+	parent_url = request.json.pop('url_id')
 	if parent_url:
 		parent = Record.query.filter_by(url_id = parent_url).first()
 		if parent:
-			record['parent_id'] = parent.id
+			request.json['parent_id'] = parent.id
 	feedback = Feedback(**request.json)
 	db.session.add(feedback)
 	db.session.commit()

@@ -119,8 +119,8 @@
         </div>
 
         </section>
-</div>
     </div>
+</div>
 
 
     <div ng-if="fileUploaded == true">
@@ -166,7 +166,7 @@
         </section>
         <section>
             <div class="row bg-primary services2">
-                <div class="col-md-offset-2 col-md-8">
+                <div class="col-md-offset-2 col-md-8" ng-if="!feedbackSent">
                     <h3>We love feedback, tell us what you think...</h3>
                     <form name="sentMessage" id="contactForm" novalidate="" ng-submit="sendFeedback()">
                         <div class="row control-group">
@@ -183,7 +183,11 @@
                         </div>
                     </form>
                 </div>
+                <div class="col-md-offset-2 col-md-8 text-center" ng-if="feedbackSent">
+                    <h3>Thank you for your feedback!</h3>
+                </div>
             </div>
         </section>
+        </div>
     </div>
 </div>
