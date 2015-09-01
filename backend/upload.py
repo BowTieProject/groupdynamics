@@ -2,7 +2,7 @@ from backend import app, db
 from flask import jsonify,request
 from parser import Message, User, Chat, Statistics
 from cStringIO import StringIO
-from models import Record
+from models import Record, Feedback
 import json
 import datetime
 import os
@@ -63,3 +63,15 @@ def get_config():
 def get_file_size(fileobj):
 	fileobj.seek(0,os.SEEK_END)
 	return fileobj.tell()
+
+@app.route('/api/feedback',methods=['POST'])
+def get_feedback():
+	parent_url = request.json.pop('url_id')
+	if parent_url:
+		parent = Record.query.filter_by(url_id = parent_url).first()
+		if parent:
+			request.json['parent_id'] = parent.id
+	feedback = Feedback(**request.json)
+	db.session.add(feedback)
+	db.session.commit()
+	return jsonify(message='Thank you for your feedback!')
