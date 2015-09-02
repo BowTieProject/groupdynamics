@@ -9,6 +9,7 @@ class Record(db.Model):
 	timestamp = db.Column(db.DateTime)
 	url_id = db.Column(db.String,unique=True)
 	parent_id = db.Column(db.Integer,db.ForeignKey(id))
+	feedbacks = db.relationship("Feedback", backref="record")
 
 	children = db.relationship("Record", 
 		cascade="save-update, merge, refresh-expire, expunge",
@@ -20,4 +21,14 @@ class Record(db.Model):
 	def __init__(self,**kwargs):
 		for key,value in kwargs.items():
 			castKey = getattr(Record,key).expression.type.__repr__()
+			setattr(self,key,value)
+
+class Feedback(db.Model):
+	id = db.Column(db.Integer,primary_key=True)
+	message = db.Column(db.Text)
+	parent_id =  db.Column(db.Integer,db.ForeignKey('record.id'))
+
+	def __init__(self,**kwargs):
+		for key,value in kwargs.items():
+			castKey = getattr(Feedback,key).expression.type.__repr__()
 			setattr(self,key,value)
