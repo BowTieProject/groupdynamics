@@ -29,7 +29,7 @@ angular.module('frontendApp')
 		//dropdown menu
 		$scope.dropdownDevice = "Android";
 		$scope.dropdown = function(dropdownDevice){
-			$scope.dropdownDevice = ""+dropdownDevice;
+			$scope.dropdownDevice = dropdownDevice;
 		}
 		
         $scope.feedback = null;
@@ -102,9 +102,18 @@ function getChartConfig($scope, $http) {
 			$scope.data = data;
 			$scope.fileUploaded = true;
 			$scope.loadingSpinner = false;
+			// setTimeout(function() {
+			// 			$scope.fileUploaded = true;
+			// 			$scope.loadingSpinner = false;
+			// 			console.log('in timeout')
+			// 		}, 500);
 		})
 		.error(function(data, status, headers, config) {
+			$scope.data = data;
 			$scope.fileUploaded = false;
-			$scope.loadingSpinner = false;
+			// setTimeout(function() {
+			// 			$scope.false = true;
+			// 			$scope.loadingSpinner = false;
+			// 		}, 500);
 		});
 }
