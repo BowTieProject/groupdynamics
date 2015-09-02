@@ -78,10 +78,9 @@ angular.module('frontendApp')
 			}
 		};
 
-        $scope.sendFeedback = function (){
-            
+        $scope.sendFeedback = function (feedback){
             $http.post('/api/feedback',{
-                "message":$scope.feedback,
+                "message":feedback,
                 "url_id":$scope.url_id
             })
             .success(function(data,status,headers,config){
