@@ -39,16 +39,21 @@
             <section id="help">
 
                 <div class="col-md-12 text-center bg-primary">
+                    <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
 
                     <h2>How it works</h2>
-                    <!--<div class="dropdown">-->
-                    <!--    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> Select Device-->
-                    <!--        <span class="caret"></span></button>-->
-                    <!--    <ul class="dropdown-menu" id="dropdownList" role="menu">-->
-                    <!--        <li class="dropdown"><a href="#">Android</a></li>-->
-                    <!--        <li class="dropdown"><a href="#">iPhone</a></li>-->
-                    <!--    </ul>-->
-                    <!--</div>-->
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" id="gray-button" type="button" data-toggle="dropdown"> {{dropdownDevice}}
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu2" id="dropdownList" role="menu">
+                            <li class="dropdown"><a href="" ng-click=dropdown("Android")>Android</a></li>
+                            <li class="dropdown"><a href="" ng-click=dropdown("iPhone")>iPhone</a></li>
+                            <li class="dropdown"><a href="" ng-click=dropdown("Windows")>Windows Phone</a></li>
+                        </ul>
+                    </div>
+                    </div>
+                    </div>
                     <hr class="small">
 
                     <div class="row">
@@ -57,11 +62,20 @@
                                 <h4>
                                     <strong>Step 1: Export from WhatsApp </strong>
                                 </h4>
-                                <div ng-if="dropdown == Android">
-
-                                    <p> (1) Tap and hold the chat. (2) Select "Email Chat" and choose "Without Media". (3) Send it to your own Email address.
-                                    </p>
+                                <p>
+                                <div ng-if="dropdownDevice == 'Android'">
+                                     (1) Tap and hold the chat. (2) Select "Email Chat" and choose "Without Media". (3) Send it to your own Email address.
+                                    
                                 </div>
+                                 <div ng-if="dropdownDevice == 'iPhone'">
+                                     Note: Unfortunately, the process to upload chats from iPhone is suboptiomal. You will need a desktop or an Android phone for Step 2 & 3. 
+                                     (1) Open the WhatsApp Chat you want to email. (2) Tap contact's name or group subject on top of page.  (3) Select "Email Chat" and choose "Without Media". (4) Send it to your own Email address.
+                                   
+                                </div>
+                                <div ng-if="dropdownDevice == 'Windows'">
+                                    (1) Open the WhatsApp Chat you want to email. (2) Tap three dots in the bottom right hand corner, then click info or group info. (3) Tap the three dots in the bottom right hand corner. (4) Send it to your own Email address.
+                                </div>
+                                </p>
                             </div>
                         </div>
                         <div class="col-md-4 col-sm-12">
@@ -70,8 +84,17 @@
                                 <h4>
                                     <strong>Step 2: Save to your phone</strong>
                                 </h4>
+                                
                                 <p>
-                                    Open the email that you sent in Step 1 and save the attached txt file.
+                                   <div ng-if="dropdownDevice == 'Android'">
+                                        (1) Open the email that you sent in Step 1 and (2) save the attached txt file.
+                                    </div>
+                                    <div ng-if="dropdownDevice == 'iPhone'">
+                                       (1) Open the email that you sent in Step 1 on a Desktop computer or an Android Phone. (2) Save the attached txt file.
+                                    </div>
+                                    <div ng-if="dropdownDevice == 'Windows'">
+                                        (1) Open the email that you sent in Step 1 and save the attached txt file.
+                                    </div>
                                 </p>
                             </div>
                         </div>
@@ -83,9 +106,15 @@
                                     <strong>Step 3: Upload to this website</strong>
                                 </h4>
                                 <p>
-
-                                    Upload the text file that you saved in Step 2 to this website. (1) Click the 'Upload your Chat' button. (2) Select 'Documents' and (3) choose the txt file.
-
+                                   <div ng-if="dropdownDevice == 'Android'">
+                                            Upload the text file that you saved in Step 2 to this website. (1) Click the 'Upload your Chat' button. (2) Select 'Documents' and (3) choose the txt file.
+                                    </div>
+                                    <div ng-if="dropdownDevice == 'iPhone'">
+                                            Upload the text file that you saved in Step 2 to this website.  (1) Click the 'Upload your Chat' button and (2) choose the txt file. Note: This does NOT work on devices thatn run iOS8 or earlier. Please use Desktop or Android. 
+                                    </div>
+                                    <div ng-if="dropdownDevice == 'Windows'">
+                                            Upload the text file that you saved in Step 2 to this website via Android phone or Desktop.. (1) Click the 'Upload your Chat' button. (2) choose the txt file.
+                                    </div>
                                 </p>
                             </div>
                         </div>
@@ -102,12 +131,21 @@
                 <hr class="small">
 
                 <div class="row">
-                    <div class="col-md-12 col-sm-12">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="service-item">
+                            <h4>
+                                    <strong>With which devices can I use this service?</strong>
+                                </h4>
+                            <p> You can export WhatsApp chats with all mobile devices. You can upload chats with Android or your desktop computer. You can then share and view stats on all devices, including desktops.     
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-12">
                         <div class="service-item">
                             <h4>
                                     <strong>How is my data stored?</strong>
                                 </h4>
-                            <p> We don't store your chats. When you upload your chat, we analyze it and then drop the data.
+                            <p> We don't store your chats. When you upload your chat, we analyze it and then drop the  data. We keep the meta data so you are able to easily share your stats.
                             </p>
                         </div>
                     </div>

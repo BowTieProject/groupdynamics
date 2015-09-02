@@ -28,6 +28,10 @@ body {
 }
 
 
+#gray-button {
+    background-color: gray;
+}
+
 
 body {
     font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;

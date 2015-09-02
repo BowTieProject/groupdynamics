@@ -22,6 +22,12 @@ angular.module('frontendApp')
 					$scope.loadingSpinner = false;
 
 				}
+				
+				//dropdown menu
+				$scope.dropdownDevice = "Android";
+				$scope.dropdown = function(dropdownDevice){
+					$scope.dropdownDevice = ""+dropdownDevice;
+				}
 
 
 				$scope.gotoBottom = function() {
