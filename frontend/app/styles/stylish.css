@@ -6,9 +6,12 @@
 
 /* Global Styles */
 
+h1 {
+    display: inline;
+}
 html,
 body {
-    display: table;
+    /*display: table;*/
     
     position: relative;
     width: 100%;
@@ -20,7 +23,26 @@ body {
     background-size: cover;
     -o-background-size: cover;
     background-attachment: fixed;
+    
+    overflow-y: scroll;
 }
+
+
+#gray-button {
+    background-color: gray;
+}
+
+#dropdownList{
+  position: absolute;
+
+    /* This works with `top: 50%;`... */
+    left: 50%;
+
+    /* ...and `translate(-50%, -50%)` as well. */
+    transform: translatex(-50%);
+    
+}
+
 
 body {
     font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -75,7 +97,6 @@ body {
 hr.small {
     max-width: 100px;
 }
-
 /* Side Menu */
 
 #sidebar-wrapper {
@@ -168,7 +189,7 @@ hr.small {
 }
 
 .header2 {
-    margin-top: -40px;
+    margin-top: 40px;
     margin-bottom: 53px
 }
 
@@ -183,9 +204,10 @@ hr.small {
 .services {
     padding: 0px 0;
     /*margin-bottom: 100px;*/
-    opacity: 0.8;
+    opacity: 0.9;
     position: absolute;
     top: 100%
+
     
 }
 
@@ -193,7 +215,13 @@ hr.small {
     padding: 0px 0;
     margin-top: 20px;
     opacity: 0.9;
+
     
+}
+
+.faq {
+    margin-top: 50px;
+  
 }
 
 .service-item {

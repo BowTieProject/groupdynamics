@@ -14,12 +14,14 @@ decorator==4.0.2
 ipython==4.0.0
 ipython-genutils==0.1.0
 itsdangerous==0.24
+newrelic==2.54.0.41
 numpy==1.9.2
 pandas==0.16.2
 pandas-highcharts==0.4.6
 path.py==7.6
 pexpect==3.3
 pickleshare==0.5
+psycopg2==2.6.1
 python-dateutil==2.4.2
 python-editor==0.3
 pytz==2015.4

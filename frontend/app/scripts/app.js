@@ -19,18 +19,23 @@ angular
     'angularFileUpload',
     'highcharts-ng'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider,$locationProvider,$compileProvider) {
+
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|whatsapp):/);
+
     $routeProvider
-    .when("/main", {
-        templateUrl: "views/main.html",
-        controller: "main"
-      })
-      .when("/", {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
-      })
-      .otherwise({
-        redirectTo: "/main"
-      });
+    .when("/", {
+      templateUrl: 'views/main.html',
+      controller: 'MainCtrl',
+      controllerAs: 'main'
+    })
+    .when("/:url_id", {
+      templateUrl: 'views/main.html',
+      controller: 'MainCtrl',
+      controllerAs: 'main'
+    })
+    .otherwise({
+      redirectTo: "/"
+    });
   });
+
