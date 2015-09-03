@@ -62,10 +62,8 @@ angular.module('frontendApp')
 					$scope.progress[i - 1] = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
 				}).success(function(data, status, headers, config) {
 					$scope.data = data;
-					var label = 'Nr. of Messages: ' + $scope.data.number_of_messages + '; Nr. of People: ' + $scope.data.number_of_users;
-					//adding GoogleAnalytics Event
-					ga('send', 'event', 'SuccesfullUpload', 'click', label);
-					console.log("Success");
+					console.log("Success upload");
+
 					$location.path('/' + data.url_id);
 				}).then(function() {
 					//Not sure any of this gets executed.
@@ -101,18 +99,18 @@ function getChartConfig($scope, $http) {
 			$scope.data = data;
 			$scope.fileUploaded = true;
 			$scope.loadingSpinner = false;
-			// setTimeout(function() {
-			// 			$scope.fileUploaded = true;
-			// 			$scope.loadingSpinner = false;
-			// 			console.log('in timeout')
-			// 		}, 500);
+			
+			var label = 'Nr. of Messages: ' + $scope.data.number_of_messages + '; Nr. of People: ' + $scope.data.number_of_users;
+					//adding GoogleAnalytics Event
+			ga('send', 'event', 'SuccesfullUpload', 'click', label);
+			console.log("Success");
 		})
 		.error(function(data, status, headers, config) {
 			$scope.data = data;
 			$scope.fileUploaded = false;
-			// setTimeout(function() {
-			// 			$scope.false = true;
-			// 			$scope.loadingSpinner = false;
-			// 		}, 500);
+			$scope.loadingSpinner = false;
+			console.log("Error");
+						$scope.false = true;
+
 		});
 }
