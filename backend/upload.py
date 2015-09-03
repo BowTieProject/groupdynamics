@@ -71,7 +71,6 @@ def get_feedback():
 		parent = Record.query.filter_by(url_id = parent_url).first()
 		if parent:
 			request.json['parent_id'] = parent.id
-	print request.json
 	feedback = Feedback(**request.json)
 	db.session.add(feedback)
 	db.session.commit()
