@@ -45,6 +45,7 @@ angular.module('frontendApp')
 			$location.hash(old);
 		};
 		$scope.onFileSelect = function($files) {
+			$scope.fileUploaded = false;
 			$scope.loadingSpinner = true;
 			//$files: an array of files selected, each file has name, size, and type.
 			$scope.selectedFiles = $files;
@@ -68,10 +69,6 @@ angular.module('frontendApp')
 				}).then(function() {
 					//Not sure any of this gets executed.
 					$scope.selectedFiles = null;
-					$scope.fileUploaded = true;
-					setTimeout(function() {
-						$(window).resize();
-					}, 500);
 				});
 			}
 		};
@@ -99,7 +96,9 @@ function getChartConfig($scope, $http) {
 			$scope.data = data;
 			$scope.fileUploaded = true;
 			$scope.loadingSpinner = false;
-			
+			setTimeout(function() {
+					$(window).resize();
+			}, 100);
 			var label = 'Nr. of Messages: ' + $scope.data.number_of_messages + '; Nr. of People: ' + $scope.data.number_of_users;
 					//adding GoogleAnalytics Event
 			ga('send', 'event', 'SuccesfullUpload', 'click', label);
