@@ -7,9 +7,11 @@ import json
 import datetime
 import os
 import uuid
+import time
 
 @app.route('/api/uploadChat',methods=['POST'])
 def upload_chat():
+	t1 = time.time()
 	strio = StringIO(request.files['file'].read())
 	chat = Chat(strio)
 	record = {}
@@ -45,6 +47,7 @@ def upload_chat():
 		'number_of_users':chat.return_total_users()
 			}
 	record['chart_config_json'] = json.dumps(charts)
+	record['compute_time'] = time.time() - t1
 	record = Record(**record)
 	db.session.add(record)
 	db.session.commit()

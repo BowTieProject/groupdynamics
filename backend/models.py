@@ -9,6 +9,7 @@ class Record(db.Model):
 	timestamp = db.Column(db.DateTime)
 	url_id = db.Column(db.String,unique=True)
 	parent_id = db.Column(db.Integer,db.ForeignKey(id))
+	compute_time = db.Column(db.Float)
 	feedbacks = db.relationship("Feedback", backref="record")
 
 	children = db.relationship("Record", 
